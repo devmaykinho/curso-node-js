@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:         
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=stock      
+      - POSTGRES_USER=adm
+      - POSTGRES_PASSWORD=123
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./database-stock:/db/database
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080      
