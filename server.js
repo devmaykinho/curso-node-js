@@ -9,6 +9,10 @@ const app = express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+app.use('/health', (req, res) => {
+    res.status(200).json({message: 'service working'})
+})
+
 app.use('/auth', auth);
 app.use('/product', product);
 app.use('/user', user);

@@ -30,8 +30,35 @@ const create = async (user) => {
 
 }
 
+const validateRequiredFields = (user) =>{
+    let isValid = true;
+
+    Object.keys(user).forEach( (item) => {
+        if(!user[item] || user[item] == ''){
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+const validatePassword = (password) => {
+    const regexNumber = /[0-9]/
+    const regexUpper = /[A-Z]/    
+
+    if (password.length != 6)
+        return false
+    if (!regexNumber.test(password))
+        return false
+    if (!regexUpper.test(password))
+        return false
+
+  return true;   
+}
 
 export {
     findAll,
-    create
+    create,
+    validateRequiredFields,
+    validatePassword
 };
